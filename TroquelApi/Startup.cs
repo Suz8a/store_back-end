@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using TroquelApi.Models;
+using TroquelApi.Services;
 
 namespace TroquelApi
 {
@@ -25,6 +28,15 @@ namespace TroquelApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // requires using Microsoft.Extensions.Options
+            services.Configure<TroquelDatabaseSettings>(
+                Configuration.GetSection(nameof(TroquelDatabaseSettings)));
+
+            services.AddSingleton<ITroquelDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<TroquelDatabaseSettings>>().Value);
+
+            services.AddSingleton<ClienteService>();
+
             services.AddControllers();
         }
 

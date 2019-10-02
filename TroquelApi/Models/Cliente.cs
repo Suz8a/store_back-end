@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace TroquelApi.Models
 {
-    public class Book
+    public class Cliente
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
