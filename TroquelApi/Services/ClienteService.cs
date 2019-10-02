@@ -14,11 +14,11 @@ namespace TroquelApi.Services
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
 
-            _clientes = database.GetCollection<Cliente>(settings.TroquelCollectionName);
+            _clientes = database.GetCollection<Cliente>(settings.ClienteCollectionName);
         }
 
         public List<Cliente> Get() =>
-            _clientes.Find(Cliente => true).ToList();
+            _clientes.Find(cliente => true).ToList();
 
         public Cliente Get(string id) =>
             _clientes.Find<Cliente>(cliente => cliente.Id == id).FirstOrDefault();

@@ -9,7 +9,6 @@ namespace TroquelApi.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-        [BsonElement("Name")]
         public string nombre { get; set; }
 
         public string apellido_materno { get; set; }
