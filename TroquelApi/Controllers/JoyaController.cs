@@ -20,7 +20,7 @@ namespace TroquelApi.Controllers
         public ActionResult<List<Joya>> Get() =>
             _joyaService.Get();
 
-        [HttpGet("{id:length(24)}", Name = "GetCliente")]
+        [HttpGet("{id:length(24)}", Name = "GetJoya")]
         public ActionResult<Joya> Get(string id)
         {
             var joya = _joyaService.Get(id);
