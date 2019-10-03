@@ -38,6 +38,7 @@ namespace TroquelApi
             services.AddSingleton<ClienteService>();
             services.AddSingleton<JoyaService>();
             services.AddSingleton<RolService>();
+            services.AddSingleton<ServicioService>();
 
             services.AddControllers();
         }
