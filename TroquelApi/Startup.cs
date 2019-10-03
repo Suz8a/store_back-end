@@ -36,6 +36,7 @@ namespace TroquelApi
                 sp.GetRequiredService<IOptions<TroquelDatabaseSettings>>().Value);
 
             services.AddSingleton<ClienteService>();
+            services.AddSingleton<JoyaService>();
 
             services.AddControllers();
         }

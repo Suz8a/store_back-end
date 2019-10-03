@@ -1,5 +1,4 @@
-﻿using System;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace TroquelApi.Models
@@ -11,7 +10,6 @@ namespace TroquelApi.Models
         public string Id { get; set; }
 
         public string nombre { get; set; }
-
 
     }
 }
