@@ -67,7 +67,7 @@ namespace TroquelApi.Controllers
             }
 
             _joyaService.Remove(joya.Id);
-
+             
             return NoContent();
         }
 
