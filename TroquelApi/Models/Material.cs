@@ -1,9 +1,9 @@
 ﻿using System;
 namespace TroquelApi.Models
 {
-    public class Estado
+    public class Material
     {
-        public Estado()
+        public Material()
         {
         }
     }

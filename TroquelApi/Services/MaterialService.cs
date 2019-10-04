@@ -1,9 +1,9 @@
 ﻿using System;
 namespace TroquelApi.Services
 {
-    public class ServicioService
+    public class MaterialService
     {
-        public ServicioService()
+        public MaterialService()
         {
         }
     }

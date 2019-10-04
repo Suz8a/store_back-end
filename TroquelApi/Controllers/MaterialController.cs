@@ -1,9 +1,9 @@
 ﻿using System;
 namespace TroquelApi.Controllers
 {
-    public class EstadoController
+    public class MaterialController
     {
-        public EstadoController()
+        public MaterialController()
         {
         }
     }
