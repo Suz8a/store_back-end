@@ -41,6 +41,7 @@ namespace TroquelApi
             services.AddSingleton<ServicioService>();
             services.AddSingleton<EstadoService>();
             services.AddSingleton<MaterialService>();
+            services.AddSingleton<UsuarioService>();
 
             services.AddControllers();
         }
