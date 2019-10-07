@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Linq;
+using TroquelApi.Dto;
 
 namespace TroquelApi.Services
 {
@@ -17,8 +18,9 @@ namespace TroquelApi.Services
             _usuarios = database.GetCollection<Usuario>(settings.UsuarioCollectionName);
         }
 
-        public List<Usuario> Get() =>
-            _usuarios.Find(usuario => true).ToList();
+        public List<Usuario> Get()=>
+             _usuarios.Find(usuario => true).ToList();
+           
 
         public Usuario Get(string id) =>
             _usuarios.Find<Usuario>(usuario => usuario.Id == id).FirstOrDefault();

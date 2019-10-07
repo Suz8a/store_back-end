@@ -2,6 +2,7 @@
 using TroquelApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using TroquelApi.Dto;
 
 namespace TroquelApi.Controllers
 {

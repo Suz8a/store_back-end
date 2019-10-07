@@ -17,7 +17,7 @@ namespace TroquelApi.Services
             _servicios = database.GetCollection<Servicio>(settings.ServicioCollectionName);
         }
 
-        public List<Servicio> Get() =>
+        public List<ervicio> Get() =>
             _servicios.Find(servicio => true).ToList();
 
         public Servicio Get(string id) =>

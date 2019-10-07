@@ -25,5 +25,20 @@
     <Compile Remove="Controllers\WeatherForecastController.cs" />
     <Compile Remove="WeatherForecast.cs" />
     <Compile Remove="Dto\UsuarioRol.cs" />
+    <Compile Remove="Services\RolService.cs" />
+    <Compile Remove="Models\Rol.cs" />
+    <Compile Remove="Controllers\RolController.cs" />
+    <Compile Remove="Models\Servicio.cs" />
+    <Compile Remove="Controllers\ServicioController.cs" />
+    <Compile Remove="Services\EstadoService.cs" />
+    <Compile Remove="Models\Estado.cs" />
+    <Compile Remove="Controllers\EstadoController.cs" />
+    <Compile Remove="Services\MaterialService.cs" />
+    <Compile Remove="Models\Material.cs" />
+    <Compile Remove="Controllers\MaterialController.cs" />
+    <Compile Remove="Services\JoyaService.cs" />
+    <Compile Remove="Models\Joya.cs" />
+    <Compile Remove="Controllers\JoyaController.cs" />
+    <Compile Remove="Services\ServicioService.cs" />
   </ItemGroup>
 </Project>
