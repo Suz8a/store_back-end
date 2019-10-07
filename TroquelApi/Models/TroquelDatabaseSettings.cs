@@ -4,6 +4,7 @@
     {
         public string ClienteCollectionName { get; set; }
         public string UsuarioCollectionName { get; set; }
+        public string ReporteCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }
@@ -11,6 +12,7 @@
     {
         string ClienteCollectionName { get; set; }
         string UsuarioCollectionName { get; set; }
+        string ReporteCollectionName { get; set; }
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
     }
