@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace TroquelApi.Models
 {
-    public class Reporte
+    public class Ticket
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -12,6 +12,8 @@ namespace TroquelApi.Models
         public ObjectId pedido_id { get; set; }
 
         public string descripcion { get; set; }
+
+        public string status { get; set; }
 
     }
 }

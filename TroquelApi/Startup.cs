@@ -37,7 +37,7 @@ namespace TroquelApi
 
             services.AddSingleton<ClienteService>();
             services.AddSingleton<UsuarioService>();
-            services.AddSingleton<ReporteService>();
+            services.AddSingleton<TicketService>();
 
             services.AddControllers();
         }
