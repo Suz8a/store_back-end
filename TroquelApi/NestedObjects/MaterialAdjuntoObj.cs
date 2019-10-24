@@ -1,19 +1,17 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace TroquelApi.Models
+namespace TroquelApi.NestedObjects
 {
-    public class Ticket
+    public class MaterialAdjuntoObj
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-        public ObjectId pedido_id { get; set; }
+        public string nombre_material { get; set; }
 
-        public string descripcion { get; set; }
-
-        public string estado { get; set; }
+        public double gramos { get; set; }
 
     }
 }
