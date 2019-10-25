@@ -18,6 +18,8 @@ namespace TroquelApi.Models
 
         public string estado { get; set; }
 
+        public string link_imagen { get; set;}
+
         public ObjectId cliente_id { get; set; }
 
         public ObjectId usuario_id { get; set; }
@@ -26,9 +28,9 @@ namespace TroquelApi.Models
 
         public JoyaObj  joya { get; set; }
 
-        public MaterialAdjuntoObj material_adjunto { get; set; }
+        public MaterialAdjuntoObj[] material_adjunto { get; set; }
 
-        public MaterialUtilizarObj material_utilizar { get; set; }
+        public MaterialUtilizarObj[] material_utilizar { get; set; }
 
         public PresupuestoObj presupuesto { get; set; }
 
