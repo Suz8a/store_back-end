@@ -20,6 +20,13 @@ namespace TroquelApi.Services
         public List<Cliente> Get() =>
             _clientes.Find(cliente => true).ToList();
 
+        public List<Cliente> GetByName(string nombre)
+        {
+            var filter = Builders<Cliente>.Filter.Eq(cliente => cliente.nombre, nombre);
+            return _clientes.Find(filter).ToList();
+        }
+
+
         public Cliente Get(string id) =>
             _clientes.Find<Cliente>(cliente => cliente.Id == id).FirstOrDefault();
 
