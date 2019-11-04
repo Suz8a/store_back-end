@@ -3,6 +3,6 @@ namespace TroquelApi.Helpers
 {
     public class AppSettings
     {
-        public string Secret { get; set; }
+        public static string Secret { get; set; }
     }
 }
