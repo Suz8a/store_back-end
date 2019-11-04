@@ -21,6 +21,8 @@
     <Folder Include="Services\" />
     <Folder Include="Dto\" />
     <Folder Include="NestedObjects\" />
+    <Folder Include="RolUsuario\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\WeatherForecastController.cs" />

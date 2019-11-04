@@ -20,9 +20,16 @@ namespace TroquelApi.Controllers
         public ActionResult<List<Cliente>> Get() =>
             _clienteService.Get();
 
-        [HttpGet("filter/{nombre}")]
-        public ActionResult<List<Cliente>> GetByName(string nombre) =>
-            _clienteService.GetByName(nombre);
+        [HttpGet("filter")]
+        public ActionResult<List<Cliente>> GetByName([FromQuery(Name = "nombre")] string nombre)
+        {
+            
+            if (_clienteService.GetByName(nombre).Count == 0)
+                return NotFound();
+
+            return _clienteService.GetByName(nombre);
+        }
+            
         
 
         [HttpGet("{id:length(24)}", Name = "GetCliente")]

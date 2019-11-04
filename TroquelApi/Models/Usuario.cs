@@ -15,6 +15,8 @@ namespace TroquelApi.Models
 
         public string contrasena { get; set; }
 
+        public string token { get; set; }
+
 
     }
 }
