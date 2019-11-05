@@ -8,6 +8,7 @@ using System;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using Microsoft.Extensions.Options;
 
 namespace TroquelApi.Services
 {
@@ -16,8 +17,10 @@ namespace TroquelApi.Services
         private readonly IMongoCollection<Usuario> _usuarios;
         private readonly AppSettings _appSettings;
 
-        public UsuarioService(ITroquelDatabaseSettings settings)
+        public UsuarioService(ITroquelDatabaseSettings settings, IOptions<AppSettings> appSettings)
         {
+
+            _appSettings = appSettings.Value;
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
 
