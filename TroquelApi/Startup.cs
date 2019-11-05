@@ -13,6 +13,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TroquelApi.Models;
 using TroquelApi.Services;
+using Microsoft.AspNetCore.Authorization;
+using TroquelApi.Helpers;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace TroquelApi
 {
@@ -36,11 +41,41 @@ namespace TroquelApi
             services.AddSingleton<ITroquelDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<TroquelDatabaseSettings>>().Value);
 
+
+            // Auth services configuration
+
+            // configure strongly typed settings objects
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            // configure jwt authentication
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+
+
+            // Add rest of services
             services.AddSingleton<ClienteService>();
             services.AddSingleton<UsuarioService>();
             services.AddSingleton<TicketService>();
             services.AddSingleton <PedidoService>();
-
+            services.AddScoped<UsuarioService, UsuarioService>();
             services.AddControllers();
         }
 

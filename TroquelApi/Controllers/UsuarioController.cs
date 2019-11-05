@@ -41,7 +41,7 @@ namespace TroquelApi.Controllers
             return Ok(usuario);
         }
 
-        [Authorize(Roles = Rol.Admin)]
+        //[Authorize(Roles = Rol.Admin)]
         [HttpPost]
         public ActionResult<Usuario> Create(Usuario usuario)
         {
@@ -50,7 +50,7 @@ namespace TroquelApi.Controllers
             return CreatedAtRoute("GetUsuario", new { id = usuario.Id.ToString() }, usuario);
         }
 
-        [Authorize(Roles = Rol.Admin)]
+       // [Authorize(Roles = Rol.Admin)]
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, Usuario usuarioIn)
         {
@@ -66,7 +66,7 @@ namespace TroquelApi.Controllers
             return NoContent();
         }
 
-        [Authorize(Roles = Rol.Admin)]
+       // [Authorize(Roles = Rol.Admin)]
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
@@ -84,7 +84,7 @@ namespace TroquelApi.Controllers
 
         // Authentication
 
-        [AllowAnonymous]
+       // [AllowAnonymous]
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody]Usuario userParam)
         {
@@ -96,7 +96,7 @@ namespace TroquelApi.Controllers
             return Ok(user);
         }
 
-        [Authorize(Roles = Rol.Admin)]
+       // [Authorize(Roles = Rol.Admin)]
         [HttpGet]
         public ActionResult<List<Usuario>> Get() =>
             _usuarioService.Get();

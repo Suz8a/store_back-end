@@ -7,8 +7,7 @@ using System.Security.Claims;
 using System;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-
-
+using System.Text;
 
 namespace TroquelApi.Services
 {
@@ -61,8 +60,9 @@ namespace TroquelApi.Services
             
             
             // authentication successful so generate jwt token
+
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = System.Text.Encoding.ASCII.GetBytes(AppSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
@@ -82,16 +82,16 @@ namespace TroquelApi.Services
             return user;
         }
 
-        public Usuario GetById(string id)
-        {
-            var usuario = _usuarios.Find(usuario => usuario.Id == id).FirstOrDefault();
+       // public Usuario GetById(string id)
+        //{
+          //  var usuario = _usuarios.Find(usuario => usuario.Id == id).FirstOrDefault();
 
             // return user without password
-            if (usuario != null)
-                usuario = null;
+            //if (usuario != null)
+              //  usuario = null;
 
-            return usuario;
-        }
+            //return usuario;
+        //}
 
     }
 }
