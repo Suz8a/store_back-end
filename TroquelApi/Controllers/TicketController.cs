@@ -11,11 +11,15 @@ namespace TroquelApi.Controllers
     public class TicketController : ControllerBase
     {
         private readonly TicketService _ticketService;
+        private readonly ClienteService _clienteService;
+        private readonly PedidoService _pedidoService;
         private static readonly HttpClient client = new HttpClient();
 
-        public TicketController(TicketService ticketService)
+        public TicketController(TicketService ticketService, ClienteService clienteService, PedidoService pedidoService)
         {
             _ticketService = ticketService;
+            _clienteService = clienteService;
+            _pedidoService = pedidoService;
         }
 
         [HttpGet]
@@ -40,13 +44,17 @@ namespace TroquelApi.Controllers
         {
             _ticketService.Create(ticket);
 
+            var pedido = _pedidoService.Get(ticket.pedido_id) ;
+            var cliente = _clienteService.Get(pedido.cliente_id);
+            var nomCliente = cliente.nombre + " " + cliente.apellido_paterno + " " + cliente.apellido_materno ; 
+
             var values = new Dictionary<string, string>
                 {
                 { "dest", "suadocca@gmail.com" },
-                { "folio", "12345" },
-                { "cliente", "Suzclem Adriana Ochoa Casillas" },
-                { "correo", "suadocca@gmail.com" },
-                { "descripcion", "- this is working! 2.0" }
+                { "folio", pedido.folio },
+                { "cliente", nomCliente },
+                { "correo", cliente.correo },
+                { "descripcion", ticket.descripcion }
                 };
 
             var content = new FormUrlEncodedContent(values);

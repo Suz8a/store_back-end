@@ -10,7 +10,7 @@ namespace TroquelApi.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-        public int folio { get; set; }
+        public string folio { get; set; }
 
         public string servicio { get; set; }
 
@@ -20,11 +20,11 @@ namespace TroquelApi.Models
 
         public string link_imagen { get; set;}
 
-        public ObjectId cliente_id { get; set; }
+        public string cliente_id { get; set; }
 
-        public ObjectId usuario_id { get; set; }
+        public string usuario_id { get; set; }
 
-        public ObjectId ticket_id { get; set; }
+        public string ticket_id { get; set; }
 
         public JoyaObj  joya { get; set; }
 
