@@ -37,5 +37,6 @@ namespace TroquelApi.Services
 
         public void Remove(string id) =>
             _tickets.DeleteOne(ticket => ticket.Id == id);
+
     }
 }

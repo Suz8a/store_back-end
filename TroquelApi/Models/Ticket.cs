@@ -9,7 +9,7 @@ namespace TroquelApi.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-        public ObjectId pedido_id { get; set; }
+        public string pedido_id { get; set; }
 
         public string descripcion { get; set; }
 

@@ -2,6 +2,7 @@
 using TroquelApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Net.Http;
 
 namespace TroquelApi.Controllers
 {
@@ -10,6 +11,7 @@ namespace TroquelApi.Controllers
     public class TicketController : ControllerBase
     {
         private readonly TicketService _ticketService;
+        private static readonly HttpClient client = new HttpClient();
 
         public TicketController(TicketService ticketService)
         {
@@ -34,9 +36,24 @@ namespace TroquelApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Ticket> Create(Ticket ticket)
+        public async System.Threading.Tasks.Task<ActionResult<Ticket>> CreateAsync(Ticket ticket)
         {
             _ticketService.Create(ticket);
+
+            var values = new Dictionary<string, string>
+                {
+                { "dest", "suadocca@gmail.com" },
+                { "folio", "12345" },
+                { "cliente", "Suzclem Adriana Ochoa Casillas" },
+                { "correo", "suadocca@gmail.com" },
+                { "descripcion", "- this is working! 2.0" }
+                };
+
+            var content = new FormUrlEncodedContent(values);
+
+            var response = await client.PostAsync("https://us-central1-troquel-bb3de.cloudfunctions.net/sendMail", content);
+
+            var responseString = await response.Content.ReadAsStringAsync();
 
             return CreatedAtRoute("GetTicket", new { id = ticket.Id.ToString() }, ticket);
         }
