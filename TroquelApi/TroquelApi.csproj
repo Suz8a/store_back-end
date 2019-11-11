@@ -50,6 +50,9 @@
     <Compile Remove="Services\ServicioService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Remove="out\web.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Update="Credentials\credentials.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
