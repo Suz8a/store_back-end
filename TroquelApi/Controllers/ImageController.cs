@@ -1,10 +1,19 @@
 ﻿using System;
+using TroquelApi.Models;
+using TroquelApi.Services;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+
 namespace TroquelApi.Controllers
 {
-    public class ImageController
+    public class ImageController : ControllerBase
     {
-        public ImageController()
+        ImageService imageService = new ImageService();
+
+        // GET: Image
+        public ActionResult Upload()
         {
+            return View();
         }
     }
 }
