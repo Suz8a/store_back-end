@@ -10,14 +10,15 @@ namespace TroquelApi.Helpers
     public class ConnectionString
     {
         private readonly CloudStorage _cloudStorage;
+        static string account;
+        static string key;
 
         public ConnectionString(IOptions<CloudStorage> cloudstorage)
         {
             _cloudStorage = cloudstorage.Value;
+            account = _cloudStorage.StorageAccountName;
+            key = _cloudStorage.StorageAccountKey;
         }
-
-        static string account = _cloudStorage.StorageAccountName;
-        static string key = _cloudStorage.StorageAccountKey;
 
         public static CloudStorageAccount GetConnectionString()
         {
