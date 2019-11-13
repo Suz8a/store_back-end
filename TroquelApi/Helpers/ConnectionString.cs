@@ -10,19 +10,20 @@ namespace TroquelApi.Helpers
     public class ConnectionString
     {
         private readonly CloudStorage _cloudStorage;
-        static string account;
-        static string key;
+        private readonly string _account;
+        private readonly string _key;
 
         public ConnectionString(IOptions<CloudStorage> cloudstorage)
         {
             _cloudStorage = cloudstorage.Value;
-            account = _cloudStorage.StorageAccountName;
-            key = _cloudStorage.StorageAccountKey;
+            _account = _cloudStorage.StorageAccountName;
+            _key = _cloudStorage.StorageAccountKey;
         }
 
-        public static CloudStorageAccount GetConnectionString()
+        public CloudStorageAccount GetConnectionString()
         {
-            string connectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", account, key);
+
+            string connectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", _account, _key);
             return CloudStorageAccount.Parse(connectionString);
         }
     }

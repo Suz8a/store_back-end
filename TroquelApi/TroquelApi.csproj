@@ -32,7 +32,6 @@
     <Folder Include="RolUsuario\" />
     <Folder Include="Helpers\" />
     <Folder Include="Credentials\" />
-    <Folder Include="CloudStorage\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\WeatherForecastController.cs" />

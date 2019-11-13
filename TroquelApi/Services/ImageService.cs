@@ -4,25 +4,31 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using System.IO;
 using System.Threading.Tasks;
 
-
 using Microsoft.AspNetCore.Http;
+using TroquelApi.Helpers;
 
 namespace TroquelApi.Services
 {
     public class ImageService
     {
-        public async Task<string> UploadImageAsync(HttpPostedFileBase imageToUpload)
+        ConnectionString _connectionString;
+
+        public ImageService(ConnectionString connectionString)
         {
-          
+            _connectionString = connectionString;
+        }
+
+        public async Task<string> UploadImageAsync(IFormFile imageToUpload)
+        {
 
             string imageFullPath = null;
-            if (imageToUpload == null || imageToUpload.ContentLength == 0)
+            if (imageToUpload == null || imageToUpload.Length == 0)
             {
                 return null;
             }
             try
             {
-                CloudStorageAccount cloudStorageAccount = ConnectionString.GetConnectionString();
+                CloudStorageAccount cloudStorageAccount = _connectionString.GetConnectionString();
                 CloudBlobClient cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
                 CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference("sampleimage");
 
@@ -39,7 +45,7 @@ namespace TroquelApi.Services
 
                 CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(imageName);
                 cloudBlockBlob.Properties.ContentType = imageToUpload.ContentType;
-                await cloudBlockBlob.UploadFromStreamAsync(imageToUpload.InputStream);
+                await cloudBlockBlob.UploadFromStreamAsync(imageToUpload.OpenReadStream());
 
                 imageFullPath = cloudBlockBlob.Uri.ToString();
             }
