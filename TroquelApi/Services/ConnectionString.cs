@@ -4,8 +4,9 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.Extensions.Options;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using TroquelApi.Helpers;
 
-namespace TroquelApi.Helpers
+namespace TroquelApi.Services
 {
     public class ConnectionString
     {

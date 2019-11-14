@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace TroquelApi.Controllers
 {
-    public class ImageController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ImageController : ControllerBase
     {
         private readonly ImageService _imageService;
 
@@ -18,30 +20,15 @@ namespace TroquelApi.Controllers
             _imageService = imageService;
         }
 
-        // GET: Image
-        public ActionResult Upload()
-        {
-            return View();
-        }
 
         [HttpPost]
-        public async Task<ActionResult> Upload(IFormFile photo)
+        public async Task<IActionResult> Upload([FromForm(Name = "photo")] IFormFile photo)
         {
             var imageUrl = await _imageService.UploadImageAsync(photo);
-            TempData["LatestImage"] = imageUrl.ToString();
-            return RedirectToAction("LatestImage");
+            return Ok(new { imageUrl = imageUrl });
         }
 
-        public ActionResult LatestImage()
-        {
-            var latestImage = string.Empty;
-            if (TempData["LatestImage"] != null)
-            {
-                ViewBag.LatestImage = Convert.ToString(TempData["LatestImage"]);
-            }
 
-            return View();
-        }
 
     }
 }

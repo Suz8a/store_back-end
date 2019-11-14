@@ -43,7 +43,8 @@ namespace TroquelApi
 
 
             // Auth services configuration
-
+            var cloudStorageConfig = Configuration.GetSection("CloudStorage");
+            services.Configure<CloudStorage>(cloudStorageConfig);
             // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -75,6 +76,8 @@ namespace TroquelApi
             services.AddSingleton<UsuarioService>();
             services.AddSingleton<TicketService>();
             services.AddSingleton <PedidoService>();
+            services.AddSingleton<ConnectionString>();
+            services.AddSingleton<ImageService>();
             services.AddScoped<UsuarioService, UsuarioService>();
             services.AddControllers();
         }

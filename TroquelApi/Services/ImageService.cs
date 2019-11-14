@@ -51,7 +51,7 @@ namespace TroquelApi.Services
             }
             catch (Exception ex)
             {
-
+                return ex.ToString();
             }
             return imageFullPath;
         }
