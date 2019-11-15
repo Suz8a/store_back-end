@@ -10,10 +10,12 @@ namespace TroquelApi.Controllers
     public class PedidoController : ControllerBase
     {
         private readonly PedidoService _pedidoService;
+        private readonly ContrasenaGen _contrasenaGen;
 
-        public PedidoController(PedidoService pedidoService)
+        public PedidoController(PedidoService pedidoService, ContrasenaGen contrasenaGen)
         {
             _pedidoService = pedidoService;
+            _contrasenaGen = contrasenaGen;
         }
 
         [HttpGet]
@@ -36,6 +38,8 @@ namespace TroquelApi.Controllers
         [HttpPost]
         public ActionResult<Pedido> Create(Pedido pedido)
         {
+            var contrasena = _contrasenaGen.GenerateRandomContrasena().ToString();
+            pedido.contrasena = contrasena;
             _pedidoService.Create(pedido);
 
             return CreatedAtRoute("GetPedido", new { id = pedido.Id.ToString() }, pedido);

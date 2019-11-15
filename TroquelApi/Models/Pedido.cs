@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using System;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using TroquelApi.NestedObjects;
 
@@ -11,6 +12,8 @@ namespace TroquelApi.Models
         public string Id { get; set; }
 
         public string folio { get; set; }
+
+        public string contrasena { get; set; }
 
         public string servicio { get; set; }
 
