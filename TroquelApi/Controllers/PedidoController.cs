@@ -37,6 +37,16 @@ namespace TroquelApi.Controllers
             return pedido;
         }
 
+        [HttpGet("search")]
+        public ActionResult<Pedido> GetByName([FromQuery(Name = "folio")] string folio)
+        {
+
+            if (_pedidoService.GetByFolio(folio) == null)
+                return NotFound();
+
+            return _pedidoService.GetByFolio(folio);
+        }
+
         [HttpPost]
         public ActionResult<Pedido> Create(Pedido pedido)
         {

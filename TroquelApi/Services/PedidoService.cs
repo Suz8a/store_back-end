@@ -23,6 +23,9 @@ namespace TroquelApi.Services
         public Pedido Get(string id) =>
             _pedidos.Find<Pedido>(pedido => pedido.Id == id).FirstOrDefault();
 
+        public Pedido GetByFolio(string folio) =>
+            _pedidos.Find<Pedido>(pedido => pedido.folio == folio).FirstOrDefault();
+
         public Pedido Create(Pedido pedido)
         {
             _pedidos.InsertOne(pedido);
