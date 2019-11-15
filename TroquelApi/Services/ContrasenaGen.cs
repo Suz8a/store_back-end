@@ -10,5 +10,14 @@ namespace TroquelApi.Services
             Random _rdm = new Random();
             return _rdm.Next(_min, _max);
         }
+
+        public int GenerateRandomFolio()
+        {
+            int _min = 100000;
+            int _max = 999999;
+            Random _rdm = new Random();
+            return _rdm.Next(_min, _max);
+        }
+
     }
 }

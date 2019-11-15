@@ -11,11 +11,13 @@ namespace TroquelApi.Controllers
     {
         private readonly PedidoService _pedidoService;
         private readonly ContrasenaGen _contrasenaGen;
+        private readonly FolioService _folioService;
 
-        public PedidoController(PedidoService pedidoService, ContrasenaGen contrasenaGen)
+        public PedidoController(PedidoService pedidoService, ContrasenaGen contrasenaGen, FolioService folioService)
         {
             _pedidoService = pedidoService;
             _contrasenaGen = contrasenaGen;
+            _folioService = folioService;
         }
 
         [HttpGet]
@@ -39,8 +41,16 @@ namespace TroquelApi.Controllers
         public ActionResult<Pedido> Create(Pedido pedido)
         {
             var contrasena = _contrasenaGen.GenerateRandomContrasena().ToString();
+            var folio = _contrasenaGen.GenerateRandomFolio().ToString();
+
             pedido.contrasena = contrasena;
+            pedido.folio = folio;
+
+            Folio newFolio = new Folio();
+            newFolio.folio = folio;
+
             _pedidoService.Create(pedido);
+            _folioService.Create(newFolio);
 
             return CreatedAtRoute("GetPedido", new { id = pedido.Id.ToString() }, pedido);
         }

@@ -79,6 +79,7 @@ namespace TroquelApi
             services.AddSingleton<ConnectionString>();
             services.AddSingleton<ImageService>();
             services.AddSingleton<ContrasenaGen>();
+            services.AddSingleton<FolioService>();
             services.AddScoped<UsuarioService, UsuarioService>();
             services.AddControllers();
         }
