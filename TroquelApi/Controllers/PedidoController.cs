@@ -95,6 +95,20 @@ namespace TroquelApi.Controllers
             return NoContent();
         }
 
+        // Authentication
+
+        // [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate([FromBody]Pedido userParam)
+        {
+            var pedido = _pedidoService.Authenticate(userParam.folio, userParam.contrasena);
+
+            if (pedido == null)
+                return BadRequest(new { message = "folio or password is incorrect" });
+
+            return Ok(pedido);
+        }
+
 
     }
 }

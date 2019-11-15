@@ -40,5 +40,16 @@ namespace TroquelApi.Services
 
         public void Remove(string id) =>
             _pedidos.DeleteOne(pedido => pedido.Id == id);
+
+        public Pedido Authenticate(string folio, string contrasena)
+        {
+            var user = _pedidos.Find(pedido => pedido.folio == folio && pedido.contrasena == contrasena).SingleOrDefault();
+
+            // return null if user not found
+            if (user == null)
+                return null;
+
+            return user;
+        }
     }
 }
