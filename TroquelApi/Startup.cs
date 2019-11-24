@@ -70,7 +70,7 @@ namespace TroquelApi
                 };
             });
 
-
+            services.AddCors();
             // Add rest of services
             services.AddSingleton<ClienteService>();
             services.AddSingleton<UsuarioService>();
@@ -91,6 +91,9 @@ namespace TroquelApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+
+            app.UseCors("AllowAnyOrigin");
 
             app.UseHttpsRedirection();
 
