@@ -79,7 +79,7 @@ namespace TroquelApi.Controllers
 
             _usuarioService.Remove(usuario.Id);
 
-            return NoContent();
+            return Ok(usuario);
         }
 
         // Authentication
