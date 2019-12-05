@@ -21,7 +21,9 @@ namespace TroquelApi.Models
 
         public string estado { get; set; }
 
-        public string estado_proceso { get; set; }
+        public string estado_tienda { get; set; }
+
+        public string estado_taller { get; set; }
 
         public string link_imagen { get; set;}
 
