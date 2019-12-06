@@ -50,7 +50,7 @@ namespace TroquelApi.Controllers
 
             var values = new Dictionary<string, string>
                 {
-                { "dest", "suadocca@gmail.com" },
+                { "dest", cliente.correo },
                 { "folio", pedido.folio },
                 { "cliente", nomCliente },
                 { "correo", cliente.correo },
