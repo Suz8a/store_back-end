@@ -39,8 +39,8 @@ namespace TroquelApi.Controllers
             return ticket;
         }
 
-        [HttpPost]
-        public async System.Threading.Tasks.Task<ActionResult<Ticket>> CreateAsync(Ticket ticket)
+        [HttpPost( "{dest}" )]
+        public async System.Threading.Tasks.Task<ActionResult<Ticket>> CreateAsync(string dest ,Ticket ticket)
         {
             _ticketService.Create(ticket);
 
@@ -50,7 +50,7 @@ namespace TroquelApi.Controllers
 
             var values = new Dictionary<string, string>
                 {
-                { "dest", cliente.correo },
+                { "dest", dest },
                 { "folio", pedido.folio },
                 { "cliente", nomCliente },
                 { "correo", cliente.correo },
